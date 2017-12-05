@@ -97,28 +97,29 @@ void encoCount(int n) {
                 lastenco = n;
         }
 }
-//UP-Animation
+//UP-Animation für das Menü
 void drawUp() {
         int x;
         x = 0;
         display.fillRect(63, 0, 3, 64, WHITE);
         display.fillRect(72, 24, 7, 40, WHITE);
-
         while (x != 8) {
                 display.drawLine(72 + x, 24, 100 + x, 5, WHITE);
                 ++x;
         }
         display.setCursor(83, 30);
         display.setTextSize(1);
+        display.setTextColor(WHITE, BLACK);
         display.println("ArmPos:");
         display.setCursor(83, 40);
         display.println("UP");
-
+}
+//Down-Animation für das Menü
+void drawDown() {
+  //Hier noch eintragen
 }
 // Inhalt der Menüs mit allen Punkten
 void build_menu() {
-
-
         switch (menustep) {
         case 1:
                 display.clearDisplay();
@@ -135,7 +136,6 @@ void build_menu() {
                 drawUp();
                 display.display();
                 break;
-
         case 2:
                 display.clearDisplay();
                 display.setTextSize(2);
@@ -196,7 +196,6 @@ void timerdisplay(int t) {
           display.print("Sec:");
           display.println(abs(secostart + t - seco));
           display.display();}
-
 }
 void loop() {
         //Do stuff here
@@ -204,17 +203,16 @@ void loop() {
         build_menu();
         Serial.println(menustep);
         if (digitalRead(encoderSwitchPin)) {
-
         } else {
                 if(menustep !=0) {
-                        tone(buzzer, 4000); // Send 1KHz sound signal...
-                        delay(80); // ...for 1 sec
-                        noTone(buzzer);
+                        tone(buzzer, 4000); // Sendet 4KHz Ton
+                        delay(80); //für 80ms
+                        noTone(buzzer); //Ton deaktivieren
                         servoblau.attach(8);
                         servoblau.write(180);
                 }
                 switch (menustep) {
-
+                //Auswahl der Teesorte und Timerstart
                 case 0:
                         menustep = 1;
                         break;
@@ -240,17 +238,11 @@ void loop() {
                         servoblau.detach();
                 }
         }
-
-
-
-        Serial.println(encoderValue);
-        //just here to slow down the output, and show it will work even during a delay
 }
 
 void updateEncoder() {
         int MSB = digitalRead(encoderPin1); //MSB = most significant bit
         int LSB = digitalRead(encoderPin2); //LSB = least significant bit
-
         int encoded = (MSB << 1) | LSB; //converting the 2 pin value to single number
         int sum = (lastEncoded << 2) | encoded; //adding it to the previous encoded value
         if (sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011) encoderValue++; if (sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) encoderValue--; lastEncoded = encoded; //store this value for next time
