@@ -61,9 +61,6 @@ void setup() {
         display.println("Booting");
         display.display();
         setTime(0, 0, 0, 1, 1, 1970);
-        // bla
-        // test
-        
         servoblau.attach(8);
 //Servo Init
         servoblau.write(0);
