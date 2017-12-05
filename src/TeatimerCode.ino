@@ -38,20 +38,15 @@ void setup() {
         menustep = 0;
         pinMode(encoderPin1, INPUT);
         pinMode(encoderPin2, INPUT);
-
         pinMode(encoderSwitchPin, INPUT);
-
         digitalWrite(encoderPin1, HIGH); //turn pullup resistor on
         digitalWrite(encoderPin2, HIGH); //turn pullup resistor on
-
         digitalWrite(encoderSwitchPin, HIGH); //turn pullup resistor on
-
         //call updateEncoder() when any high/low changed seen
         //on interrupt 0 (pin 2), or interrupt 1 (pin 3)
         attachInterrupt(0, updateEncoder, CHANGE);
         attachInterrupt(1, updateEncoder, CHANGE);
         display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-
         // Clear the buffer.
         display.clearDisplay();
         display.display();
@@ -62,7 +57,7 @@ void setup() {
         display.display();
         setTime(0, 0, 0, 1, 1, 1970);
         servoblau.attach(8);
-//Servo Init
+        //Servo Init
         servoblau.write(0);
         delay(1000);
         servoblau.write(180);
@@ -116,7 +111,7 @@ void drawUp() {
 }
 //Down-Animation für das Menü
 void drawDown() {
-  //Hier noch eintragen
+        //Hier noch eintragen
 }
 // Inhalt der Menüs mit allen Punkten
 void build_menu() {
