@@ -165,75 +165,39 @@ void encoCount(int n) {
         }
 }
 //UP-Animation für das Menü
+void menuinfo(int spoons,int temp,int time){
+        display.fillRect(63, 0, 2, 64, WHITE);
+        display.setCursor(67, 0);
+        display.setTextSize(1);
+        display.setTextColor(WHITE, BLACK);
+        display.println("Infos:");
+        display.setCursor(67, 12);
+        display.print(spoons);
+        display.println(" Spoons");
+        display.setCursor(67, 22);
+        display.println("per Liter!");
+        display.setCursor(67, 32);
+        display.print(temp);
+        display.println("C Water");
+        display.setCursor(67, 42);
+        display.println("Temp!");
+        display.setCursor(67, 52);
+        display.print(time);
+        display.println(" Sec.");
+}
 void drawUp() {
         switch (menustep) {
         case 1:
-                display.fillRect(63, 0, 2, 64, WHITE);
-                display.setCursor(67, 0);
-                display.setTextSize(1);
-                display.setTextColor(WHITE, BLACK);
-                display.println("Infos:");
-                display.setCursor(67, 12);
-                display.println("4 Spoons");
-                display.setCursor(67, 22);
-                display.println("per Liter!");
-                display.setCursor(67, 32);
-                display.println("95C Water");
-                display.setCursor(67, 42);
-                display.println("Temp!");
-                display.setCursor(67, 52);
-                display.println("270 Sec.");
+                menuinfo(4,95,270);
                 break;
         case 2:
-                display.fillRect(63, 0, 2, 64, WHITE);
-                display.setCursor(67, 0);
-                display.setTextSize(1);
-                display.setTextColor(WHITE, BLACK);
-                display.println("Infos:");
-                display.setCursor(67, 12);
-                display.println("3 Spoons");
-                display.setCursor(67, 22);
-                display.println("per Liter!");
-                display.setCursor(67, 32);
-                display.println("80C Water");
-                display.setCursor(67, 42);
-                display.println("Temp!");
-                display.setCursor(67, 52);
-                display.println("180 Sec.");
+                menuinfo(3, 80, 180);
                 break;
         case 3:
-                display.fillRect(63, 0, 2, 64, WHITE);
-                display.setCursor(67, 0);
-                display.setTextSize(1);
-                display.setTextColor(WHITE, BLACK);
-                display.println("Infos:");
-                display.setCursor(67, 12);
-                display.println("5 Spoons");
-                display.setCursor(67, 22);
-                display.println("per Liter!");
-                display.setCursor(67, 32);
-                display.println("95C Water");
-                display.setCursor(67, 42);
-                display.println("Temp!");
-                display.setCursor(67, 52);
-                display.println("480 Sec.");
+                menuinfo(5, 95, 480);
                 break;
         case 4:
-                display.fillRect(63, 0, 2, 64, WHITE);
-                display.setCursor(67, 0);
-                display.setTextSize(1);
-                display.setTextColor(WHITE, BLACK);
-                display.println("Infos:");
-                display.setCursor(67, 12);
-                display.println("4 Spoons");
-                display.setCursor(67, 22);
-                display.println("per Liter!");
-                display.setCursor(67, 32);
-                display.println("100C Water");
-                display.setCursor(67, 42);
-                display.println("Temp!");
-                display.setCursor(67, 52);
-                display.println("420 Sec.");
+                menuinfo(4, 100, 420);
                 break;
         }
 }
@@ -337,7 +301,7 @@ void timerdisplay(int t) {
                 case 4:
                         display.drawBitmap(10, 32, CupBMP, 32, 32, 1);
                         display.drawBitmap(86, 32, Loading270BMP, 32, 32, 1);
-                        
+
                         break;
                 }
                 if (secolast!=now()) {
@@ -355,7 +319,6 @@ void loop() {
         //Do stuff here
         encoCount(encoderValue);
         build_menu();
-        Serial.println(menustep);
         if (digitalRead(encoderSwitchPin)) {
         } else {
                 if(menustep !=0) {
