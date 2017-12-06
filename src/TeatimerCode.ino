@@ -34,6 +34,7 @@ int menustep;
 #define herbalteaT 420
 #define whiteteaT 220
 #define oolongteaT 180
+#define Version "Beta 0.5"
 static const unsigned char PROGMEM CupBMP[] =
 {// Tasse mit Dampf
         0x00, 0x40, 0x80, 0x00, 0x00, 0xe1, 0xc0, 0x00, 0x00, 0xe1, 0xc0, 0x00, 0x01, 0xc1, 0x80, 0x00,
@@ -119,7 +120,9 @@ void setup() {
         display.setTextSize(2);
         display.setTextColor(WHITE);
         display.setCursor(0, 0);
-        display.println("Booting");
+        display.println("TEA-Tech");
+        display.println(Version);
+        display.println("Booting...");
         display.display();
         setTime(0, 0, 0, 1, 1, 1970);
         servoblau.attach(8);
@@ -141,7 +144,7 @@ void setup() {
         display.setTextColor(WHITE);
         display.setCursor(0, 0);
         display.println("TEA-Tech");
-        display.println("Alpha0.4");
+        display.println(Version);
         display.display();
 }
 //Methode zum Berechnen/Zählen der Position im Menü
@@ -163,20 +166,76 @@ void encoCount(int n) {
 }
 //UP-Animation für das Menü
 void drawUp() {
-        int x;
-        x = 0;
-        display.fillRect(63, 0, 3, 64, WHITE);
-        display.fillRect(72, 24, 7, 40, WHITE);
-        while (x != 8) {
-                display.drawLine(72 + x, 24, 100 + x, 5, WHITE);
-                ++x;
+        switch (menustep) {
+        case 1:
+                display.fillRect(63, 0, 2, 64, WHITE);
+                display.setCursor(67, 0);
+                display.setTextSize(1);
+                display.setTextColor(WHITE, BLACK);
+                display.println("Infos:");
+                display.setCursor(67, 12);
+                display.println("4 Spoons");
+                display.setCursor(67, 22);
+                display.println("per Liter!");
+                display.setCursor(67, 32);
+                display.println("95C Water");
+                display.setCursor(67, 42);
+                display.println("Temp!");
+                display.setCursor(67, 52);
+                display.println("270 Sec.");
+                break;
+        case 2:
+                display.fillRect(63, 0, 2, 64, WHITE);
+                display.setCursor(67, 0);
+                display.setTextSize(1);
+                display.setTextColor(WHITE, BLACK);
+                display.println("Infos:");
+                display.setCursor(67, 12);
+                display.println("3 Spoons");
+                display.setCursor(67, 22);
+                display.println("per Liter!");
+                display.setCursor(67, 32);
+                display.println("80C Water");
+                display.setCursor(67, 42);
+                display.println("Temp!");
+                display.setCursor(67, 52);
+                display.println("180 Sec.");
+                break;
+        case 3:
+                display.fillRect(63, 0, 2, 64, WHITE);
+                display.setCursor(67, 0);
+                display.setTextSize(1);
+                display.setTextColor(WHITE, BLACK);
+                display.println("Infos:");
+                display.setCursor(67, 12);
+                display.println("5 Spoons");
+                display.setCursor(67, 22);
+                display.println("per Liter!");
+                display.setCursor(67, 32);
+                display.println("95C Water");
+                display.setCursor(67, 42);
+                display.println("Temp!");
+                display.setCursor(67, 52);
+                display.println("480 Sec.");
+                break;
+        case 4:
+                display.fillRect(63, 0, 2, 64, WHITE);
+                display.setCursor(67, 0);
+                display.setTextSize(1);
+                display.setTextColor(WHITE, BLACK);
+                display.println("Infos:");
+                display.setCursor(67, 12);
+                display.println("4 Spoons");
+                display.setCursor(67, 22);
+                display.println("per Liter!");
+                display.setCursor(67, 32);
+                display.println("100C Water");
+                display.setCursor(67, 42);
+                display.println("Temp!");
+                display.setCursor(67, 52);
+                display.println("420 Sec.");
+                break;
         }
-        display.setCursor(83, 30);
-        display.setTextSize(1);
-        display.setTextColor(WHITE, BLACK);
-        display.println("ArmPos:");
-        display.setCursor(83, 40);
-        display.println("UP");
 }
 //Down-Animation für das Menü
 void drawDown() {
@@ -288,10 +347,8 @@ void timerdisplay(int t) {
                         }
                         secolast=now();
                 }
-
                 display.display();
         }
-
 }
 void loop() {
         //Do stuff here
