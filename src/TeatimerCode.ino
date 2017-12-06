@@ -337,6 +337,7 @@ void timerdisplay(int t) {
                 case 4:
                         display.drawBitmap(10, 32, CupBMP, 32, 32, 1);
                         display.drawBitmap(86, 32, Loading270BMP, 32, 32, 1);
+                        
                         break;
                 }
                 if (secolast!=now()) {
