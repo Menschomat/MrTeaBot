@@ -1,9 +1,5 @@
 #include <Time.h>
 #include <TimeLib.h>
-
-//From bildr article: http://bildr.org/2012/08/rotary-encoder-arduino/
-
-//these pins can not be changed 2/3 are special pins
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
