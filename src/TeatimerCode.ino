@@ -326,7 +326,7 @@ void loop() {
                         delay(80); //für 80ms
                         noTone(buzzer); //Ton deaktivieren
                         servoblau.attach(8);
-                        servoblau.write(180);
+                        servoblau.write(150);
                 }
                 switch (menustep) {
                 //Auswahl der Teesorte und Timerstart
