@@ -280,9 +280,12 @@ void timerdisplay(int t) {
                 display.setCursor(0, 0);
                 display.print("Sec:");
                 display.println(abs(secostart + t - seco));
-
+                void drawimages(const uint8_t Bitmat,int x ,int y){
+                  
+                }
                 switch (count) {
                 case 1:
+
                         display.drawBitmap(10, 32, CupCoolBMP, 32, 32, 1);
                         display.drawBitmap(86, 32, Loading0BMP, 32, 32, 1);
                         break;

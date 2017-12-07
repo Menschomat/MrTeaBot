@@ -14,10 +14,21 @@ Features:
 
 Supported Teas:
 ------
-#### Green Tea:
+- Green Tea
+- Black Tea
+- Fruit Tea
+- Herbal Tea
 
-#### Black Tea:
+Build your own:
+-------
 
-#### Fruit Tea:
-
-#### Herbal Tea:
+#### Things needed:
+- Arduino Nano (mine is an Nano made by Robotdyn)
+- 128x64 OLED I2C display
+- Microservo
+- Buzzer for Arduino
+- Rotary Encoder with button
+- 3D-Printer for the case
+- Stripboard
+- Pin-Sockets
+  - plus matching pins
